@@ -12,6 +12,8 @@
 
 /ask Review the code for adherence to popular conventions and the style guide in README-prompts.md (import order, type hinting, docstrings, constants, formatting). Ensure all constants and tunable parameters are defined appropriately (e.g., at the module level). Create a plan to apply these changes incrementally.
 
+/ask Don't write code for this prompt. While it's ok to consider how this code will be written and used, the goal is for your output to be a set of design decisions that can be passed to the editor, such that the editor can then write the markdown file for you. Therefore focus on the documenting your design decisions. Avoid code snippets unless they provide drastic improvements in design clarity, and in that case keep them highly concise so they articulate the design decision by example.
+
 # --- Specific Tasks ---
 
 /ask Identify any functions or modules that seem overly complex or long. Suggest how they could be broken down into smaller, more manageable units. Provide a refactoring plan.

@@ -1,7 +1,7 @@
 # Coding Environment
 
 * The development environment operating system is MacOS. Microsoft Windows is not used in the development environment.
-* iterm2 is the main terminal interface, although VsCode uses its own terminal implementation.
+* iterm2 is the main terminal interface.
 * The shell is bash.
 * The run-aider.sh script that enables choice of LLM models and aider command line options.
 

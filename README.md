@@ -1,0 +1,1 @@
+Global files, to which I can symbolic link from any project. Then default aider imports from README-<topic> will work anywhere. I will have to remember to make the symlinks, so it is not automatic.  I can put the symlinks in .gitignore as well.

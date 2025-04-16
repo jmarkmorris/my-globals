@@ -133,6 +133,8 @@ These control how the *main* LLM's output is presented to the *editor* LLM. The 
     *   **Downsides:** Uses significantly more tokens than `editor-diff`, potentially increasing cost and latency.
     *   **`run-aider.sh` Usage:** The *initial default* in Architect Mode. Switchable to `editor-diff` via the pre-launch confirmation menu.
 
+There are additional edit formats to investigate. The choices of edit modes could be expanded in the future.
+
 **Troubleshooting Edit Failures:**
 
 If you experience frequent failed edits, especially with complex changes, switching from a `diff`-based format (`diff`, `editor-diff`) to a `whole`-based format (`whole`, `editor-whole`) using the `run-aider.sh` pre-launch menu might improve reliability, at the cost of increased token usage.
@@ -149,7 +151,7 @@ If you experience frequent failed edits, especially with complex changes, switch
 
 You can change aider settings using command line options, a `.aider.conf.yml` file, or environment variables.
 
-*   **Command Line Options:** You can specify settings directly when you run the `aider` command. For example, `aider --dark-mode` enables dark mode.
+*   **Command Line Options:** You can specify settings directly when you run the `aider` command. For example, `aider --dark-mode` enables dark mode, which makes code snippets have a dark background rather than glaring white.
 *   **.aider.conf.yml File:** Create a file named `.aider.conf.yml` in your home directory or at the root of your git repository. You can then add settings to this file in YAML format. For example:
 
     ```yaml

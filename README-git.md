@@ -1,3 +1,32 @@
+# Initialization when Switching Projects or Laptops
+
+## fetch remote changes
+git fetch origin
+
+## Pull changes frequently before starting new work or pushing, especially on shared branches.
+git pull --rebase origin main
+
+## encryption of void repo with git
+cd /Users/markmorris/vibe/void
+git-crypt export-key /Users/markmorris/vibe/void.key
+git-crypt unlock ../void.key
+
+
+## Create feature branches for development:
+git checkout -b new-feature-branch
+
+
+## if README links get broken
+void:ln -s /Users/marmorri/vibe/my-globals/README-ask.md README-ask.md
+void:ln -s /Users/marmorri/vibe/my-globals/README-prompts.md README-prompts.md
+
+
+## don't do this with my_globals (and others?)  because it will break symbolic links
+## starting with a fresh repo in /Users/markmorris/vibe/
+git clone https://github.com/jmarkmorris/void.git
+git clone https://github.com/jmarkmorris/run-aider.git
+
+
 # Git Synchronization Workflow for Multiple Machines
 
 ## Important Note on Cloud-Synced Repositories (iCloud, OneDrive, etc.)

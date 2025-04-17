@@ -15,13 +15,8 @@ Using a single local Git repository stored in a cloud-synced folder (like iCloud
 **Recommended Practice:**
 
 1.  **Separate Clones:** Clone the remote repository (e.g., from GitHub) independently onto each machine you use.
-2.  **Store Repos Outside Synced Folders:** Keep your local Git repositories in directories that are *not* managed or synced by cloud services (e.g., `~/Projects/` instead of `~/Documents/` if Documents are synced).
+2.  **Store Repos Outside Synced Folders:** Keep your local Git repositories in directories that are *not* managed or synced by cloud services (e.g., `~/Projects/` or `~/vibe/` instead of `~/Documents/` if Documents are synced).
 3.  **Sync via Git:** Use the standard Git workflow (`git pull`, `git push`) to synchronize changes between your local repositories and the central remote repository.
-
-| Setup                                      | Safe? | Issues/Risks                                     |
-| :----------------------------------------- | :---- | :----------------------------------------------- |
-| Single repo in iCloud/OneDrive, accessed by multiple machines | **No**  | Corruption, sync conflicts, accidental file adds |
-| Separate clones on each machine (outside synced folders) | **Yes** | None (standard Git workflow)                     |
 
 **In summary: Treat the remote repository (GitHub, GitLab, etc.) as the source of truth and use `git push` and `git pull` to coordinate changes between separate local clones on different machines. Do not rely on file synchronization services to manage a single shared local repository.**
 
@@ -68,7 +63,7 @@ Using a single local Git repository stored in a cloud-synced folder (like iCloud
 
 # Initialize a Local (Remote) Repo
 
-* git clone https://github.com/<my-user-name>/<my-repo>.git
+* git clone https://github.com/ my-user-name/my-repo.git
 
 # Refresh a Local (Remote) Repo
 

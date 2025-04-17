@@ -134,3 +134,155 @@ Using a single local Git repository stored in a cloud-synced folder (like iCloud
    # Optionally, create and switch to a new branch
    # git checkout -b my-working-branch
    ```
+
+   ---
+
+To initiate a new branch from the 'main' repository, pull down the latest versions of the repository, and push changes, you can follow these steps both in raw Git commands and in Visual Studio Code (VSCode).
+
+### Raw Git Commands
+
+1. **Navigate to your repository directory**:
+    ```sh
+    cd /path/to/your/repo
+    ```
+
+2. **Ensure you are on the 'main' branch**:
+    ```sh
+    git checkout main
+    ```
+
+3. **Pull the latest changes from the remote repository**:
+    ```sh
+    git pull origin main
+    ```
+
+4. **Create a new branch**:
+    ```sh
+    git checkout -b new-branch-name
+    ```
+
+5. **Make changes and commit them**:
+    ```sh
+    git add .
+    git commit -m "Your commit message"
+    ```
+
+6. **Push the new branch to the remote repository**:
+    ```sh
+    git push origin new-branch-name
+    ```
+
+### Process in Visual Studio Code (VSCode)
+
+1. **Open your repository in VSCode**:
+    - Navigate to your repository directory and open it in VSCode.
+
+2. **Open the Source Control panel**:
+    - Click on the Source Control icon in the sidebar or press `Ctrl+Shift+G`.
+
+3. **Ensure you are on the 'main' branch**:
+    - Click on the branch name in the bottom-left corner of the VSCode window and select 'main' if you are not already on it.
+
+4. **Pull the latest changes**:
+    - Open the terminal in VSCode (`Ctrl+` or `View > Terminal`) and run:
+      ```sh
+      git pull origin main
+      ```
+
+5. **Create a new branch**:
+    - Click on the branch name in the bottom-left corner again and select `Create new branch`.
+    - Enter the name of your new branch.
+
+6. **Make changes and commit them**:
+    - Make your changes in the code editor.
+    - Go to the Source Control panel, stage your changes by clicking the `+` icon next to the files you modified.
+    - Enter your commit message in the input box at the top of the Source Control panel and click the checkmark icon to commit.
+
+7. **Push the new branch to the remote repository**:
+    - Open the terminal in VSCode and run:
+      ```sh
+      git push origin new-branch-name
+      ```
+
+To merge your changes back into the main repository, you can follow these steps both in raw Git commands and in Visual Studio Code (VSCode).
+
+### Raw Git Commands
+
+1. **Ensure you are on your feature branch**:
+    ```sh
+    git checkout new-branch-name
+    ```
+
+2. **Pull the latest changes from the remote repository to ensure your branch is up-to-date**:
+    ```sh
+    git pull origin new-branch-name
+    ```
+
+3. **Switch to the 'main' branch**:
+    ```sh
+    git checkout main
+    ```
+
+4. **Pull the latest changes from the remote 'main' branch**:
+    ```sh
+    git pull origin main
+    ```
+
+5. **Merge your feature branch into the 'main' branch**:
+    ```sh
+    git merge new-branch-name
+    ```
+
+6. **Resolve any merge conflicts if they arise**:
+    - Open the conflicting files, resolve the conflicts, and then stage the resolved files:
+      ```sh
+      git add .
+      ```
+
+7. **Commit the merge**:
+    ```sh
+    git commit -m "Merged new-branch-name into main"
+    ```
+
+8. **Push the updated 'main' branch to the remote repository**:
+    ```sh
+    git push origin main
+    ```
+
+### Process in Visual Studio Code (VSCode)
+
+1. **Ensure you are on your feature branch**:
+    - Click on the branch name in the bottom-left corner of the VSCode window and select your feature branch (`new-branch-name`).
+
+2. **Pull the latest changes**:
+    - Open the terminal in VSCode (`Ctrl+` or `View > Terminal`) and run:
+      ```sh
+      git pull origin new-branch-name
+      ```
+
+3. **Switch to the 'main' branch**:
+    - Click on the branch name in the bottom-left corner again and select `main`.
+
+4. **Pull the latest changes from the remote 'main' branch**:
+    - Open the terminal in VSCode and run:
+      ```sh
+      git pull origin main
+      ```
+
+5. **Merge your feature branch into the 'main' branch**:
+    - Open the terminal in VSCode and run:
+      ```sh
+      git merge new-branch-name
+      ```
+
+6. **Resolve any merge conflicts if they arise**:
+    - VSCode will highlight the conflicting files. Open each file, resolve the conflicts, and then stage the resolved files in the Source Control panel.
+
+7. **Commit the merge**:
+    - Enter your commit message in the input box at the top of the Source Control panel and click the checkmark icon to commit.
+
+8. **Push the updated 'main' branch to the remote repository**:
+    - Open the terminal in VSCode and run:
+      ```sh
+      git push origin main
+      ```

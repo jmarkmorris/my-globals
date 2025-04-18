@@ -1,3 +1,5 @@
+# *Best practice is to manage git operations in VsCode. Use this README if necessary.*
+
 # Initialization when Switching Projects or Laptops
 
 ## fetch remote changes

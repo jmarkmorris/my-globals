@@ -18,8 +18,7 @@ The `runaider.sh` script provides an interactive command-line interface to confi
     - **Architect Mode:** Uses separate LLMs for high-level planning (Architect) and detailed code implementation (Editor).
 - Guiding you through selecting the LLM vendor (OpenAI, Anthropic, Google, Deepseek) and specific model for each role (Code, Architect, Editor).
 - Managing API keys securely (loading from environment or files).
-- **Allowing pre-launch selection of the Aider edit format** (`whole`/`diff` for Code mode, `editor-whole`/`editor-diff` for Architect mode) via an interactive menu.
-- Automatically adding `README-prompts.md` and `README-ask.md` as read-only files to the Aider chat context.
+- Allowing pre-launch selection of the Aider edit format (`whole`/`diff` for Code mode, `editor-whole`/`editor-diff` for Architect mode) via an interactive menu.
 
 Use `./run-aider.sh` in your terminal to start the configuration process. To see detailed usage instructions, including API key setup and menu flow, run `./run-aider.sh -h` or `./run-aider.sh --help`.
 
@@ -88,17 +87,6 @@ Run aider with the `--vim` switch (automatically included by `run-aider.sh`) to 
 
 Aider's `--edit-format` option controls how code changes are presented to the LLM. The `run-aider.sh` script helps select this format before launching. Understanding the differences can help troubleshoot failed edits.
 
-**`run-aider.sh` Behavior:**
-
-1.  **Initial Defaults:**
-    *   **Code Mode:** Initially defaults to the **`whole`** edit format.
-    *   **Architect Mode:** Initially defaults to the **`editor-whole`** edit format.
-2.  **Pre-Launch Confirmation Menu:** Before executing `aider`, the script shows a menu displaying the currently selected edit format and the full command.
-3.  **Switching Formats:** This menu allows pressing '2' to switch to the alternative format:
-    *   In Code Mode: Switch between `whole` and `diff`.
-    *   In Architect Mode: Switch between `editor-whole` and `editor-diff`.
-    The menu updates to show the new format and command before launching.
-
 **Description of Edit Formats:**
 
 1.  **`diff`**
@@ -137,7 +125,7 @@ There are additional edit formats to investigate. The choices of edit modes coul
 
 **Troubleshooting Edit Failures:**
 
-If you experience frequent failed edits, especially with complex changes, switching from a `diff`-based format (`diff`, `editor-diff`) to a `whole`-based format (`whole`, `editor-whole`) using the `run-aider.sh` pre-launch menu might improve reliability, at the cost of increased token usage.
+If you experience frequent failed edits, especially with complex changes, switching from a `diff`-based format (`diff`, `editor-diff`) to a `whole`-based format (`whole`, `editor-whole`) using the `run-aider.sh` pre-launch menu might improve reliability, at the cost of increased token usage. In some benchmarks whole mode has shown to be more successful, but it may also cost more.
 
 **Summary:**
 
@@ -155,7 +143,16 @@ You can change aider settings using command line options, a `.aider.conf.yml` fi
 *   **.aider.conf.yml File:** Create a file named `.aider.conf.yml` in your home directory or at the root of your git repository. You can then add settings to this file in YAML format. For example:
 
     ```yaml
+    # aider.conf.yml
     dark-mode: true
+    show-model-warnings: true
+    analytics: true
+    show-release-notes: false
+    read:
+    - README-prompts.md
+    - README-ask.md
+    auto-commits: false
+    vim: true
     ```
 *   **Environment Variables:** You can set environment variables to configure aider. The environment variable name is usually `AIDER_` followed by the option name in uppercase. For example, to enable dark mode, you would set `AIDER_DARK_MODE=true`. You can set these variables in your shell or in a `.env` file.
 

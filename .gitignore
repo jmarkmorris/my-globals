@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Aider
+.aider*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+ENV/

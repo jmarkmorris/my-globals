@@ -1,11 +1,8 @@
 # Coding Environment
 
 *   The development environment operating system is MacOS. Microsoft Windows is not used in the development environment. All keystroke sequences should be for MacOS.
-
 *   iterm2 is the main terminal interface.
-
-*   The shell is bash.
-
+*   The shell is bash. If I ask you to work on a shell script please remind me that I strongly prefer python.
 *   The run-aider.sh script that enables choice of LLM models and aider command line options.
 
 # General Coding Principles
@@ -47,7 +44,7 @@ When writing code, you MUST follow these principles:
 *   **Explain Rationale:** For non-trivial changes, briefly explain the 'why' behind the chosen approach, not just the 'what'.
 *   **Suggest Alternatives:** Feel free to suggest alternative implementations if you believe they offer significant advantages (e.g., performance, readability, simplicity).
 *   **Handling Large Requests:** If a request involves extensive changes, propose a plan or ask for the request to be broken down into smaller, manageable steps.
-*   Always provide feedback, as your last message, regarding how to express the prompt request concisely!
+*   Always provide feedback to each prompt, regarding how to express the prompt request concisely!
 *   Comments should explain the overall design and purpose of the code block.
 *   All comments added should be professional and concise.
 *   Comments should not be parochial, i.e., specific to a particular problem, issue, or revision.

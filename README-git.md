@@ -2,6 +2,20 @@
 
 This guide covers common Git operations, emphasizing best practices, especially when working across multiple machines or collaborating. While command-line instructions are provided, using the Git integration within Visual Studio Code (VSCode) is often more intuitive and efficient for daily tasks.
 
+## General Best Practices & Configuration
+
+Tips for maintaining a clean and effective Git workflow.
+
+*   **Commit Frequently:** Make small, atomic commits that represent a single logical change. This makes history easier to understand and revert if needed.
+*   **Write Good Commit Messages:**
+    *   Use the imperative mood in the subject line (e.g., "Fix bug", "Add feature", "Refactor module").
+    *   Keep the subject line concise (ideally <= 50 characters).
+    *   If more detail is needed, add a blank line after the subject and write a more detailed explanation in the body.
+*   **Use Feature Branches:** Avoid working directly on the `main` branch for anything other than trivial fixes. Create descriptive branches for features, bugs, etc. (`git checkout -b feature/user-login`, `git checkout -b fix/bug-123`).
+*   **Pull Before Pushing:** On shared branches (like `main`), always run `git pull --rebase` (preferred) or `git pull` immediately before `git push` to integrate any changes made by others first. This minimizes complex merge conflicts.
+*   **Understand `.gitignore`:** Use a `.gitignore` file at the root of your repository to tell Git which files or directories it should ignore (e.g., compiled code, dependencies, log files, OS-specific files, editor configuration). Add `.gitignore` itself to the repository.
+
+
 ## Git Operations in Visual Studio Code (VSCode)
 
 VSCode offers a powerful and user-friendly interface for most Git operations, which is often the preferred method.
@@ -33,6 +47,10 @@ VSCode offers a powerful and user-friendly interface for most Git operations, wh
     *   Or use the Synchronize Changes button in the status bar.
 
 8.  **Switch Branches**:
+    *   Branching model
+        * main: always a working branch, squash on merge
+        * depot: (aka staging, next, development): features merge here before going to main
+        * featureXYZ: leaf branches for specific new features. 
     *   Click the current branch name in the bottom-left corner of the VSCode window.
     *   Select the desired branch from the dropdown list.
 
@@ -125,7 +143,7 @@ git fetch origin
 # Option 1: Discard local changes and match the remote (SAFER if local work isn't needed)
 # WARNING: This overwrites your local files and history to match the remote branch!
 # Ensure you have backed up any essential local-only changes first.
-git reset --hard origin/main # Or origin/master if that's the remote default branch name
+git reset --hard origin/main 
 
 # Option 2: Keep local work by creating a new branch based on the remote state
 # This is useful if you have local commits you want to integrate later.
@@ -136,7 +154,7 @@ git reset --hard origin/main # Or origin/master if that's the remote default bra
 # You can proceed with the daily workflow (pull, push, etc.).
 ```
 
-## Daily Workflow (Command Line)
+## Frequently Used Commands
 
 These are the commands you'll use most frequently during development.
 
@@ -413,7 +431,7 @@ git-crypt unlock /path/to/your/repository_name.key
 
 ### Situation: Fixing Broken Symbolic Links
 
-Symbolic links in a repo can sometimes break or turn into plain files, especially when cloning across different operating systems or using certain tools.
+Symbolic links in a repo can sometimes break or turn into plain files.
 
 ```bash
 # Example: Recreate specific symbolic links if they became regular files
@@ -436,7 +454,7 @@ git commit -m "Fix broken symbolic link my_link.md"
 
 Strategies for keeping repositories synchronized when working on more than one computer or with other people.
 
-### Important Note on Cloud-Synced Repositories (iCloud, OneDrive, Dropbox, etc.)
+### Important Warning on Cloud-Synced Repositories (iCloud, OneDrive, Dropbox, etc.)
 
 **Using a single local Git repository stored directly within a cloud-synced folder (like iCloud Drive, OneDrive, Dropbox) and accessing it from multiple machines simultaneously is STRONGLY DISCOURAGED.**
 
@@ -453,7 +471,7 @@ Strategies for keeping repositories synchronized when working on more than one c
 
 **In summary: Treat the remote repository as the single source of truth. Use `git push` and `git pull` to coordinate changes between separate local clones on different machines. Do NOT rely on file synchronization services to manage or share a single local repository instance.**
 
-### Tips for working with a *non-shared* repo in iCloud (Use with Extreme Caution)
+### Warning for working with a *non-shared* repo in iCloud (Use with Extreme Caution)
 
 If you absolutely *must* store a repository that you *only access from one machine at a time* within an iCloud Drive folder (still not recommended), ensure iCloud Drive's "Optimize Mac Storage" feature is turned OFF for that folder, or manually use "Download Now" on the entire project folder before working on it. Even then, the risk of issues remains higher than storing it outside synced folders. The multi-machine workflow below is far safer.
 
@@ -498,29 +516,3 @@ This assumes you have separate clones of the same remote repository on each mach
 
     *   Now Machine B's local repository is up-to-date, and you can start working. Repeat the process when switching back.
 
-## General Best Practices & Configuration
-
-Tips for maintaining a clean and effective Git workflow.
-
-*   **Commit Frequently:** Make small, atomic commits that represent a single logical change. This makes history easier to understand and revert if needed.
-*   **Write Good Commit Messages:**
-    *   Use the imperative mood in the subject line (e.g., "Fix bug", "Add feature", "Refactor module").
-    *   Keep the subject line concise (ideally <= 50 characters).
-    *   If more detail is needed, add a blank line after the subject and write a more detailed explanation in the body.
-*   **Use Feature Branches:** Avoid working directly on the `main` (or `master`) branch for anything other than trivial fixes. Create descriptive branches for features, bugs, etc. (`git checkout -b feature/user-login`, `git checkout -b fix/bug-123`).
-*   **Pull Before Pushing:** On shared branches (like `main`), always run `git pull --rebase` (preferred) or `git pull` immediately before `git push` to integrate any changes made by others first. This minimizes complex merge conflicts.
-*   **Understand `.gitignore`:** Use a `.gitignore` file at the root of your repository to tell Git which files or directories it should ignore (e.g., compiled code, dependencies, log files, OS-specific files, editor configuration). Add `.gitignore` itself to the repository.
-*   **Configure Git Globally:** Set up your identity and some helpful defaults.
-
-        # Set your name and email (used in commit logs)
-        git config --global user.name "Your Name"
-        git config --global user.email "your.email@example.com"
-
-        # Recommended: Make 'git pull' use rebase by default instead of merge
-        git config --global pull.rebase true
-
-        # Optional: Set the default branch name for new repositories created with 'git init'
-        # git config --global init.defaultBranch main
-
-        # Optional: Set your preferred editor for commit messages etc.
-        # git config --global core.editor "code --wait" # Example for VSCode
